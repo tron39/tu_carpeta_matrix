@@ -1,11 +1,15 @@
 body {
     margin: 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Roboto Mono', monospace; /* Una alternativa moderna a Courier New */
     background-color: #000;
     color: #00FF00;
-    /* Eliminamos la siguiente línea para permitir el scroll */
-    /* overflow: hidden; */
+    /* overflow: hidden; - Comentado para permitir scroll */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo si lo cambiamos */
 }
+
+/* Para usar Roboto Mono, puedes incluir este link en el <head> de tus archivos HTML:
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap">
+*/
 
 .matrix-background {
     position: fixed;
@@ -18,12 +22,15 @@ body {
 
 header {
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0; /* Un poco más de espacio */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mayor contraste */
+    box-shadow: 0 2px 5px rgba(0, 255, 0, 0.1); /* Sombra sutil */
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 3em; /* Un poco más grande */
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Resplandor en el título */
 }
 
 nav ul {
@@ -35,81 +42,112 @@ nav ul {
 }
 
 nav li {
-    margin: 0 15px;
+    margin: 0 20px; /* Más espacio entre enlaces */
 }
 
 nav a {
     text-decoration: none;
     color: #00FF00;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transición para color y sombra */
+    padding: 8px 12px; /* Un poco de padding para mejor interactividad */
+    border-radius: 3px; /* Bordes ligeramente redondeados */
 }
 
 nav a:hover {
-    color: #0f0; /* Un verde ligeramente más brillante al pasar el ratón */
+    color: #0f0; /* Verde más brillante al pasar el ratón */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.9); /* Resplandor al pasar el ratón */
 }
 
 nav a.active {
-    font-weight: bold; /* Resalta el enlace activo */
-    /* Puedes añadir más estilos para el enlace activo aquí */
+    font-weight: bold;
+    color: #0f0;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.9);
+    border-bottom: 2px solid #0f0; /* Indicador de página activa */
 }
 
 main {
-    padding: 20px;
+    padding: 30px;
     display: flex;
-    flex-direction: column; /* Para que el contenido se apile verticalmente */
-    justify-content: flex-start; /* Alinea el contenido al inicio */
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    min-height: calc(100vh - 120px); /* Ajusta la altura mínima principal */
+    min-height: calc(100vh - 160px); /* Ajuste para el header más grande */
 }
 
 .content-section {
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
-    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
     border: 1px solid #00FF00;
     border-radius: 5px;
-    margin-bottom: 20px; /* Añade un margen inferior entre secciones si tienes varias */
-    width: 80%; /* Ajusta el ancho del contenido si es necesario */
-    max-width: 960px; /* Establece un ancho máximo si lo deseas */
+    margin-bottom: 30px;
+    width: 85%;
+    max-width: 1000px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2); /* Sombra más pronunciada */
+    transition: transform 0.2s ease; /* Pequeña animación al pasar el ratón */
+}
+
+.content-section:hover {
+    transform: translateY(-3px); /* Ligeramente hacia arriba al pasar el ratón */
 }
 
 .console-text {
-    white-space: pre-wrap; /* Respeta los saltos de línea y espacios */
-    line-height: 1.5;
+    white-space: pre-wrap;
+    line-height: 1.6; /* Mejor espaciado entre líneas */
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.6); /* Sutil resplandor en el texto */
 }
 
 footer {
     text-align: center;
-    padding: 10px 0;
-    font-size: 0.8em;
+    padding: 15px 0;
+    font-size: 0.9em;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    /* Cambiamos position a static o relative para que no se superponga al contenido */
     position: static;
+    box-shadow: 0 -2px 5px rgba(0, 255, 0, 0.1); /* Sombra sutil en la parte superior */
 }
 
 /* Estilos para pantallas más grandes */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     header h1 {
-        font-size: 3em;
+        font-size: 3.5em;
     }
 
     nav li {
-        margin: 0 25px;
+        margin: 0 30px;
     }
 
     main {
-        padding: 40px;
+        padding: 50px;
     }
 
     .content-section {
-        padding: 50px;
+        padding: 60px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    header h1 {
+        font-size: 2.8em;
+    }
+
+    nav li {
+        margin: 0 18px;
+    }
+
+    main {
+        padding: 35px;
+    }
+
+    .content-section {
+        padding: 45px;
+        width: 90%;
     }
 }
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 600px) {
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     nav ul {
@@ -118,15 +156,48 @@ footer {
     }
 
     nav li {
-        margin: 10px 0;
+        margin: 15px 0;
+    }
+
+    nav a {
+        padding: 10px 15px;
+        border-radius: 5px;
     }
 
     main {
-        padding: 15px;
+        padding: 20px;
     }
 
     .content-section {
-        padding: 20px;
-        width: 95%; /* Ajusta el ancho para pantallas pequeñas */
+        padding: 30px;
+        width: 95%;
     }
+
+    footer {
+        font-size: 0.85em;
+    }
+}
+
+/* Ajustes para la lista en la página de programas */
+.content-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.content-section ul li {
+    margin-bottom: 10px;
+}
+
+.content-section ul li a {
+    color: #00FF00;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.content-section ul li a:hover {
+    color: #0f0;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.9);
 }
