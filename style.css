@@ -3,7 +3,8 @@ body {
     font-family: 'Courier New', monospace;
     background-color: #000;
     color: #00FF00;
-    overflow: hidden; /* Oculta las barras de desplazamiento */
+    /* Eliminamos la siguiente línea para permitir el scroll */
+    /* overflow: hidden; */
 }
 
 .matrix-background {
@@ -55,9 +56,10 @@ nav a.active {
 main {
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Para que el contenido se apile verticalmente */
+    justify-content: flex-start; /* Alinea el contenido al inicio */
     align-items: center;
-    min-height: calc(100vh - 120px); /* Ajusta la altura principal */
+    min-height: calc(100vh - 120px); /* Ajusta la altura mínima principal */
 }
 
 .content-section {
@@ -65,6 +67,9 @@ main {
     padding: 30px;
     border: 1px solid #00FF00;
     border-radius: 5px;
+    margin-bottom: 20px; /* Añade un margen inferior entre secciones si tienes varias */
+    width: 80%; /* Ajusta el ancho del contenido si es necesario */
+    max-width: 960px; /* Establece un ancho máximo si lo deseas */
 }
 
 .console-text {
@@ -76,10 +81,10 @@ footer {
     text-align: center;
     padding: 10px 0;
     font-size: 0.8em;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
+    /* Cambiamos position a static o relative para que no se superponga al contenido */
+    position: static;
 }
 
 /* Estilos para pantallas más grandes */
@@ -122,5 +127,6 @@ footer {
 
     .content-section {
         padding: 20px;
+        width: 95%; /* Ajusta el ancho para pantallas pequeñas */
     }
 }

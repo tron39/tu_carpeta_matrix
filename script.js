@@ -6,7 +6,7 @@ let height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-const fontSize = 16;
+const fontSize =16;
 const columns = Math.floor(width / fontSize);
 const drops = Array(columns).fill(1);
 
