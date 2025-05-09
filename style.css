@@ -1,15 +1,16 @@
+/* Estilos base (tema oscuro por defecto) */
 body {
     margin: 0;
-    font-family: 'Roboto Mono', monospace; /* Una alternativa moderna a Courier New */
-    background-color: #000;
-    color: #00FF00;
-    /* overflow: hidden; - Comentado para permitir scroll */
-    transition: background-color 0.3s ease; /* Transición suave para el fondo si lo cambiamos */
+    font-family: 'Fira Mono', monospace;
+    background-color: #080808;
+    color: #00CC00;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease-in-out;
+    opacity: 0; /* Inicialmente invisible para la transición de página */
 }
 
-/* Para usar Roboto Mono, puedes incluir este link en el <head> de tus archivos HTML:
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap">
-*/
+body.loaded {
+    opacity: 1; /* Se vuelve visible al cargar */
+}
 
 .matrix-background {
     position: fixed;
@@ -17,20 +18,42 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Detrás del contenido */
+    z-index: -1;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 header {
     text-align: center;
-    padding: 30px 0; /* Un poco más de espacio */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mayor contraste */
-    box-shadow: 0 2px 5px rgba(0, 255, 0, 0.1); /* Sombra sutil */
+    padding: 25px 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid #008000;
+    transition: background-color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
 header h1 {
-    font-size: 3em; /* Un poco más grande */
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Resplandor en el título */
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(0, 204, 0, 0.7);
+    transition: text-shadow 0.3s ease;
+}
+
+header button#themeToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: rgba(0, 128, 0, 0.2);
+    color: #00CC00;
+    border: 1px solid #008000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+header button#themeToggle:hover {
+    background-color: rgba(0, 128, 0, 0.4);
 }
 
 nav ul {
@@ -42,162 +65,127 @@ nav ul {
 }
 
 nav li {
-    margin: 0 20px; /* Más espacio entre enlaces */
+    margin: 0 18px;
 }
 
 nav a {
     text-decoration: none;
-    color: #00FF00;
-    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transición para color y sombra */
-    padding: 8px 12px; /* Un poco de padding para mejor interactividad */
-    border-radius: 3px; /* Bordes ligeramente redondeados */
+    color: #00CC00;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    padding: 6px 10px;
+    border-bottom: 2px solid transparent;
 }
 
 nav a:hover {
-    color: #0f0; /* Verde más brillante al pasar el ratón */
-    text-shadow: 0 0 5px rgba(0, 255, 0, 0.9); /* Resplandor al pasar el ratón */
+    color: #00FF00;
+    border-bottom-color: #00FF00;
 }
 
 nav a.active {
     font-weight: bold;
-    color: #0f0;
-    text-shadow: 0 0 8px rgba(0, 255, 0, 0.9);
-    border-bottom: 2px solid #0f0; /* Indicador de página activa */
+    color: #00FF00;
+    border-bottom-color: #00FF00;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
 main {
-    padding: 30px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: calc(100vh - 160px); /* Ajuste para el header más grande */
+    min-height: calc(100vh - 140px);
 }
 
 .content-section {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border: 1px solid #00FF00;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    width: 85%;
-    max-width: 1000px;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2); /* Sombra más pronunciada */
-    transition: transform 0.2s ease; /* Pequeña animación al pasar el ratón */
-}
-
-.content-section:hover {
-    transform: translateY(-3px); /* Ligeramente hacia arriba al pasar el ratón */
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #006600;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    width: 80%;
+    max-width: 960px;
+    box-shadow: 0 0 10px rgba(0, 204, 0, 0.15);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .console-text {
     white-space: pre-wrap;
-    line-height: 1.6; /* Mejor espaciado entre líneas */
-    text-shadow: 0 0 3px rgba(0, 255, 0, 0.6); /* Sutil resplandor en el texto */
+    line-height: 1.5;
+    color: #00BB00;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 footer {
     text-align: center;
-    padding: 15px 0;
-    font-size: 0.9em;
+    padding: 12px 0;
+    font-size: 0.85em;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     position: static;
-    box-shadow: 0 -2px 5px rgba(0, 255, 0, 0.1); /* Sombra sutil en la parte superior */
+    border-top: 1px solid #008000;
+    color: #00CC00;
+    transition: background-color 0.3s ease, border-top-color 0.3s ease, color 0.3s ease;
 }
 
-/* Estilos para pantallas más grandes */
-@media (min-width: 1200px) {
-    header h1 {
-        font-size: 3.5em;
-    }
-
-    nav li {
-        margin: 0 30px;
-    }
-
-    main {
-        padding: 50px;
-    }
-
-    .content-section {
-        padding: 60px;
-    }
+/* Estilos para el tema claro */
+body.light-theme {
+    background-color: #f0f0f0;
+    color: #333;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
-    header h1 {
-        font-size: 2.8em;
-    }
-
-    nav li {
-        margin: 0 18px;
-    }
-
-    main {
-        padding: 35px;
-    }
-
-    .content-section {
-        padding: 45px;
-        width: 90%;
-    }
+body.light-theme .matrix-background {
+    opacity: 0.3;
+    filter: invert(100%);
 }
 
-/* Estilos para pantallas más pequeñas */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2.2em;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav li {
-        margin: 15px 0;
-    }
-
-    nav a {
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    .content-section {
-        padding: 30px;
-        width: 95%;
-    }
-
-    footer {
-        font-size: 0.85em;
-    }
+body.light-theme header {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: #ccc;
 }
 
-/* Ajustes para la lista en la página de programas */
-.content-section ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
+body.light-theme header h1 {
+    color: #222;
+    text-shadow: none;
 }
 
-.content-section ul li {
-    margin-bottom: 10px;
+body.light-theme header button#themeToggle {
+    background-color: rgba(220, 220, 220, 0.8);
+    color: #333;
+    border-color: #ccc;
 }
 
-.content-section ul li a {
-    color: #00FF00;
-    text-decoration: none;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    padding: 5px 10px;
-    border-radius: 3px;
+body.light-theme header button#themeToggle:hover {
+    background-color: rgba(200, 200, 200, 0.8);
 }
 
-.content-section ul li a:hover {
-    color: #0f0;
-    text-shadow: 0 0 5px rgba(0, 255, 0, 0.9);
+body.light-theme nav a {
+    color: #555;
+}
+
+body.light-theme nav a:hover {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+body.light-theme nav a.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+    text-shadow: none;
+}
+
+body.light-theme .content-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .console-text {
+    color: #444;
+    text-shadow: none;
+}
+
+body.light-theme footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top-color: #ccc;
+    color: #333;
 }
